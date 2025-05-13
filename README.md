@@ -34,6 +34,19 @@ To run this project locally, follow the steps below:
    git clone https://github.com/your-username/ipl-score-win-prediction.git
 
 ## Navigate to the project directory:
-```bash
+  ```bash
   cd ipl-score-win-prediction
+## Run the Flask App :
+ 
+Ensure all dependencies are installed:
+```bash
+pip install -r requirements.txt
 
+Start the Flask server:
+```bash
+python app.py
+Open your browser and go to:
+```bash
+http://127.0.0.1:5000/
+
+Enter match details like team names, current score, overs, wickets, etc., to get the predicted final score and win probability.
