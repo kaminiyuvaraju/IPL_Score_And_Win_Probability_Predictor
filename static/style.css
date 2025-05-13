@@ -1,0 +1,169 @@
+/* style.css */
+
+/* Basic reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    display: flex;
+    justify-content: flex-start; /* Align from top */
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes full height */
+}
+
+/* Container to hold the content */
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    margin-top: 50px; /* Adjust top margin to prevent it from sticking to the top */
+}
+
+/* Center all the form elements */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Button styling */
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+form button:hover {
+    background-color: #e6b800;
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(255, 204, 0, 0.3);
+}
+
+/* Graph Container */
+.graph-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Text Container */
+.text-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Summary Box */
+.summary {
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1rem;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Team Logos */
+.team-logos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.team-logos img {
+    width: 80px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Prediction Result */
+.prediction-result {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    color: #00ffcc;
+    font-weight: bold;
+}
+
+/* Refresh Button */
+.refresh-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.refresh-button button {
+    background-color: #00c3ff;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.25);
+}
+
+.refresh-button button:hover {
+    background-color: #00a3cc;
+    transform: scale(1.03);
+    box-shadow: 0 5px 10px rgba(0, 195, 255, 0.3);
+}
+
+/* Error Message */
+.error-message {
+    background-color: #ff4444;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 40px;
+    color: #ccc;
+}
+
+/* Generic Button (e.g., for navigation like Back or Predict Again) */
+button {
+    margin-top: 40px;
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}

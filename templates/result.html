@@ -1,0 +1,63 @@
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>🏏 IPL Score & Win Prediction</h1>
+
+    <div class="team-logos">
+        <div class="team">
+            <img id="batting-logo" src="" alt="Batting Team Logo">
+            <div><strong>{{ batting_team }}</strong></div>
+        </div>
+        <div class="team">
+            <img id="bowling-logo" src="" alt="Bowling Team Logo">
+            <div><strong>{{ bowling_team }}</strong></div>
+        </div>
+    </div>
+
+    <div class="summary">
+        <p><strong>Venue:</strong> {{ venue }}</p>
+        <p><strong>Total Runs So Far:</strong> {{ total_runs }}</p>
+        <p><strong>Wickets Fallen:</strong> {{ is_wicket }}</p>
+        <p><strong>Predicted Final Score:</strong> <u>{{ prediction }}</u></p>
+        <p><strong>Win Probability (Batting Team):</strong><u> {{ win_prob }}% </u></p>
+    </div>
+
+    <div class="chart-container">
+        <h3>📊 Match Progression (First 5 Overs)</h3>
+        <img src="data:image/png;base64,{{ graph }}" alt="Match Progression Chart">
+    </div>
+
+    <div class="refresh-button">
+        <button onclick="window.location.href='/'">Back To Prediction</button>
+    </div>
+
+    <script>
+        const teamLogos = {
+            'Chennai Super Kings': '/static/logos/csk.png',
+            'Delhi Capitals': '/static/logos/dc.png',
+            'Gujarat Titans': '/static/logos/gt.png',
+            'Kolkata Knight Riders': '/static/logos/kkr.jpeg',
+            'Lucknow Super Giants': '/static/logos/lsg.png',
+            'Mumbai Indians': '/static/logos/mi.jpeg',
+            'Punjab Kings': '/static/logos/pk.png',
+            'Rajasthan Royals': '/static/logos/rr.jpeg',
+            'Royal Challengers Bangalore': '/static/logos/rcb.jpeg',
+            'Sunrisers Hyderabad': '/static/logos/srh.png'
+        };
+
+        const battingTeam = "{{ batting_team }}";
+        const bowlingTeam = "{{ bowling_team }}";
+
+        document.getElementById('batting-logo').src = teamLogos[battingTeam] || '/static/logos/default.png';
+        document.getElementById('bowling-logo').src = teamLogos[bowlingTeam] || '/static/logos/default.png';
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Score & Win Probability Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_index.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>IPL Final Score & Win Predictor</h1>
+
+        {% if error %}
+            <div class="error-message">{{ error }}</div>
+        {% endif %}
+
+        <form action="/predict" method="post" id="scoreForm">
+            <label for="batting_team">Batting Team:</label>
+            <select name="batting_team" id="batting_team" required onchange="updateSummary(); updateLogos();">
+                <option value="" disabled selected>Select Batting Team</option>
+                <option value="Chennai Super Kings">Chennai Super Kings</option>
+                <option value="Delhi Capitals">Delhi Capitals</option>
+                <option value="Gujarat Titans">Gujarat Titans</option>
+                <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                <option value="Lucknow Super Giants">Lucknow Super Giants</option>
+                <option value="Mumbai Indians">Mumbai Indians</option>
+                <option value="Punjab Kings">Punjab Kings</option>
+                <option value="Rajasthan Royals">Rajasthan Royals</option>
+                <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+            </select>
+
+            <label for="bowling_team">Bowling Team:</label>
+            <select name="bowling_team" id="bowling_team" required onchange="updateSummary(); updateLogos();">
+                <option value="" disabled selected>Select Bowling Team</option>
+                <option value="Chennai Super Kings">Chennai Super Kings</option>
+                <option value="Delhi Capitals">Delhi Capitals</option>
+                <option value="Gujarat Titans">Gujarat Titans</option>
+                <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                <option value="Lucknow Super Giants">Lucknow Super Giants</option>
+                <option value="Mumbai Indians">Mumbai Indians</option>
+                <option value="Punjab Kings">Punjab Kings</option>
+                <option value="Rajasthan Royals">Rajasthan Royals</option>
+                <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+            </select>
+
+            <label for="venue">Venue:</label>
+            <select name="venue" id="venue" required onchange="updateSummary()">
+                <option value="" disabled selected>Select Venue</option>
+                <option value="MA Chidambaram Stadium">MA Chidambaram Stadium</option>
+                <option value="Feroz Shah Kotla">Feroz Shah Kotla</option>
+                <option value="Eden Gardens">Eden Gardens</option>
+                <option value="Wankhede Stadium">Wankhede Stadium</option>
+                <option value="Sawai Mansingh Stadium">Sawai Mansingh Stadium</option>
+                <option value="M Chinnaswamy Stadium">M Chinnaswamy Stadium</option>
+                <option value="Rajiv Gandhi International Stadium">Rajiv Gandhi International Stadium</option>
+                <option value="Brabourne Stadium">Brabourne Stadium</option>
+                <option value="Dr DY Patil Sports Academy">Dr DY Patil Sports Academy</option>
+                <option value="Maharashtra Cricket Association Stadium">Maharashtra Cricket Association Stadium</option>
+                <option value="Holkar Cricket Stadium">Holkar Cricket Stadium</option>
+            </select>
+
+            <label for="total_runs">Runs in First 5 Overs:</label>
+            <input type="number" name="total_runs" id="total_runs" required oninput="updateSummary()">
+
+            <label for="is_wicket">Wickets in First 5 Overs:</label>
+            <input type="number" name="is_wicket" id="is_wicket" required oninput="updateSummary()">
+
+            <label for="overs">Total Overs:</label>
+            <input type="number" name="overs" id="overs" step="0.1" required oninput="updateSummary()">
+
+            <label for="balls">Total Balls</label>
+            <input type="number" name="balls" id="balls" required oninput="updateSummary()">
+
+            <button type="submit">Predict Final Score</button>
+        </form>
+
+        <div class="summary" id="inputSummary">
+            <strong>Match Summary Preview:</strong>
+            <p>Batting: <span id="batting_preview"></span></p>
+            <p>Bowling: <span id="bowling_preview"></span></p>
+            <p>Venue: <span id="venue_preview"></span></p>
+            <p>Runs: <span id="runs_preview">-</span>, Wickets: <span id="wickets_preview">-</span></p>
+            <p>Overs: <span id="overs_preview">-</span>, Balls: <span id="balls_preview">-</span></p>
+        </div>
+
+        <div class="team-logos">
+            <img id="batting_logo" src="" alt="Batting Team Logo">
+            <img id="bowling_logo" src="" alt="Bowling Team Logo">
+        </div>
+
+        {% if prediction %}
+            <div class="prediction-result">
+                Predicted Final Score: {{ prediction }} Runs
+            </div>
+        {% endif %}
+
+        <div class="refresh-button">
+            <form action="/">
+                <button type="submit">Predict Another</button>
+            </form>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 IPL Score Predictor. Built with ❤️ by Kamini Yuvaraju and Koppala Lahari.
+        </div>
+    </div>
+
+    <script>
+        const logos = {
+            'Chennai Super Kings': '/static/logos/csk.png',
+            'Delhi Capitals': '/static/logos/dc.png',
+            'Gujarat Titans': '/static/logos/gt.png',
+            'Kolkata Knight Riders': '/static/logos/kkr.jpeg',
+            'Lucknow Super Giants': '/static/logos/lsg.png',
+            'Mumbai Indians': '/static/logos/mi.jpeg',
+            'Punjab Kings': '/static/logos/pk.png',
+            'Rajasthan Royals': '/static/logos/rr.jpeg',
+            'Royal Challengers Bangalore': '/static/logos/rcb.jpeg',
+            'Sunrisers Hyderabad': '/static/logos/srh.png'
+        };
+
+        function updateSummary() {
+            document.getElementById('batting_preview').textContent = document.getElementById('batting_team').value;
+            document.getElementById('bowling_preview').textContent = document.getElementById('bowling_team').value;
+            document.getElementById('venue_preview').textContent = document.getElementById('venue').value;
+            document.getElementById('runs_preview').textContent = document.getElementById('total_runs').value;
+            document.getElementById('wickets_preview').textContent = document.getElementById('is_wicket').value;
+            document.getElementById('overs_preview').textContent = document.getElementById('overs').value;
+            document.getElementById('balls_preview').textContent = document.getElementById('balls').value;
+        }
+
+        function updateLogos() {
+            const batting = document.getElementById("batting_team").value;
+            const bowling = document.getElementById("bowling_team").value;
+            document.getElementById("batting_logo").src = logos[batting] || "";
+            document.getElementById("bowling_logo").src = logos[bowling] || "";
+        }
+    </script>
+</body>
+</html>

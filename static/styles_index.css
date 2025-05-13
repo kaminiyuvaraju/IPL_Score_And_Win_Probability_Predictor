@@ -1,0 +1,142 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: hsl(0, 4%, 9%);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: hsl(83, 76%, 69%);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+select, input[type="number"], button {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: auto;  /* Adjust button width */
+    display: inline-block; /* Make the button behave like an inline block element */
+    text-align: center; /* Center text inside the button */
+    margin-left: auto; /* Align button to the right */
+    margin-right: 0; /* Remove any margin on the right */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Summary preview */
+.summary {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.summary p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+/* Team logos */
+.team-logos {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.team-logos img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+/* Error message */
+.error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* Prediction result */
+.prediction-result {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.refresh-button {
+    text-align: right; /* Align the form to the right */
+    margin-top: 20px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    margin-top: 40px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 600px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    .team-logos {
+        flex-direction: column;
+    }
+
+    .team-logos img {
+        margin-bottom: 10px;
+    }
+}
