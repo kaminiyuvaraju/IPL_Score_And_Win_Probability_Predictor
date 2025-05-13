@@ -34,5 +34,6 @@ To run this project locally, follow the steps below:
    git clone https://github.com/your-username/ipl-score-win-prediction.git
 
 ## Navigate to the project directory:
+```bash
   cd ipl-score-win-prediction
 
