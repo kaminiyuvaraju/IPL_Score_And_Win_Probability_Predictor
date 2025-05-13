@@ -17,7 +17,7 @@ This project aims to predict the scores and win probabilities for Indian Premier
 - **Pandas** for data manipulation and preprocessing
 - **NumPy** for numerical computations
 - **Matplotlib / Seaborn** for data visualization
-- **Flask/Django** (if applicable): For deploying the model as a web application.
+- **Flask**: For deploying the model as a web application
 
 ## Algorithms Used
 
@@ -25,28 +25,24 @@ This project aims to predict the scores and win probabilities for Indian Premier
 2. **Random Forest**: An ensemble method that builds multiple decision trees and aggregates their predictions to improve accuracy.
 3. **Gradient Boosting**: A boosting method that combines weak learners to improve predictive performance by focusing on errors from previous iterations.
 
-## Installation
+## Installation and Running the App
 
-To run this project locally, follow the steps below:
+### Step 1: Clone, Install, and Run
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/ipl-score-win-prediction.git
+Follow the steps below to set up and run the project:
 
-## Navigate to the project directory:
-  ```bash
-  cd ipl-score-win-prediction
-## Run the Flask App :
- 
-Ensure all dependencies are installed:
 ```bash
+# Clone the repository
+git clone https://github.com/your-username/ipl-score-win-prediction.git
+
+# Navigate to the project directory
+cd ipl-score-win-prediction
+
+# Install the required libraries
 pip install -r requirements.txt
 
-Start the Flask server:
-```bash
+# Start the Flask server
 python app.py
-Open your browser and go to:
-```bash
-http://127.0.0.1:5000/
+# Once the server is running, open your browser and visit:
 
-Enter match details like team names, current score, overs, wickets, etc., to get the predicted final score and win probability.
+http://127.0.0.1:5000/
